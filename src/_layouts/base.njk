@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if title %}{{ title }}{% else %}Eleventy SCSS Template{% endif %}</title>
-    <meta name="description" content="{% if description %}{{ description }}{% else %}A simple static website built with Eleventy and SCSS{% endif %}">
+    <title>{% if title %}{{ title }}{% else %}Synergy Solutions{% endif %}</title>
+    <meta name="description" content="{% if description %}{{ description }}{% else %}Jonathan Wisnieski — Synergy Solutions: keynotes and workshops on leadership, team connection, and culture.{% endif %}">
     <link rel="icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-    {% include "../_includes/header.njk" %}
+    {% if not home %}
+        {% include "../_includes/header-inner.njk" %}
+    {% endif %}
 
-    <main class="site-main">
+    <main class="site-main{% if home %} site-main--home{% endif %}">
         {{ content | safe }}
     </main>
 
     {% include "../_includes/footer.njk" %}
 </body>
-</html> 
+</html>

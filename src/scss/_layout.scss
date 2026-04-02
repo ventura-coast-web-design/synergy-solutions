@@ -1,49 +1,46 @@
 @use "variables";
 @use "mixins";
-// Layout components
-.site-header {
-  background-color: variables.$background-color;
-  border-bottom: 1px solid variables.$border-color;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+
+.home-top {
+  position: relative;
+  // overflow-x: clip forces overflow-y to compute to auto, which clips the hero
+  // portrait bleeding above the card; keep vertical overflow visible for that.
+  overflow-x: clip;
+  overflow-y: visible;
+  background: linear-gradient(
+    135deg,
+    #2d3a5c 0%,
+    #3d4f7a 28%,
+    #5c6b9a 55%,
+    #8b7aa8 100%
+  );
 }
 
-.nav {
-  @include mixins.container;
+.home-below {
+  padding: 3rem 0 4rem;
+  background: variables.$background-color;
 
   &__container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 0;
+    @include mixins.container;
+    max-width: 42rem;
   }
 
-  &__logo {
-    font-size: 1.5rem;
+  &__title {
+    margin: 0 0 0.75rem;
+    font-size: 1.75rem;
     font-weight: 700;
-    color: variables.$secondary-color;
+    color: variables.$hero-navy;
   }
 
-  &__menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-
-    @include mixins.responsive(variables.$breakpoint-md) {
-      gap: 3rem;
-    }
+  &__lede {
+    margin: 0;
+    color: variables.$light-text;
+    line-height: 1.6;
   }
+}
 
-  &__link {
-    color: variables.$text-color;
-    font-weight: 500;
-    transition: color 0.2s ease;
-
-    &:hover {
-      color: variables.$primary-color;
-    }
-  }
+.home-anchor {
+  scroll-margin-top: 5rem;
 }
 
 .site-main {
@@ -52,6 +49,11 @@
 
   @include mixins.responsive(variables.$breakpoint-md) {
     padding: 4rem 0;
+  }
+
+  &--home {
+    padding: 0;
+    min-height: 0;
   }
 }
 

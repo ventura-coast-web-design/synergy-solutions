@@ -1,1 +1,168 @@
 @use "variables";
+@use "mixins";
+
+// —— Home header (over gradient) ——
+.site-header--home {
+  position: relative;
+  z-index: 5;
+  padding: 1.25rem 0 0;
+}
+
+.nav-home {
+  @include mixins.container;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    line-height: 0;
+  }
+
+  &__logo {
+    max-height: 2.75rem;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &__links {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+    align-items: center;
+
+    @include mixins.responsive(variables.$breakpoint-md) {
+      display: flex;
+    }
+  }
+
+  &__link {
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s ease, opacity 0.2s ease;
+
+    &:hover {
+      color: #fff;
+      opacity: 1;
+    }
+  }
+
+  &__cta {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1.35rem;
+    border-radius: 999px;
+    background: variables.$primary-color;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.15s ease;
+
+    &:hover {
+      background: variables.$primary-color-deep;
+      color: #fff;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+// —— Inner pages ——
+.site-header--inner {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: variables.$background-color;
+  border-bottom: 1px solid variables.$border-color;
+}
+
+.nav-inner {
+  @include mixins.container;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0;
+    flex-wrap: wrap;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    line-height: 0;
+  }
+
+  &__logo {
+    max-height: 2.5rem;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &__links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1.5rem;
+
+    @include mixins.responsive(variables.$breakpoint-md) {
+      gap: 2rem;
+    }
+  }
+
+  &__link {
+    color: variables.$text-color;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: variables.$primary-color-deep;
+    }
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 1.15rem;
+    border-radius: 999px;
+    background: variables.$primary-color;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: variables.$primary-color-deep;
+      color: #fff;
+    }
+  }
+}

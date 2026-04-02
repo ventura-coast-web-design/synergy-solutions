@@ -1,9 +1,20 @@
 ---
 layout: base.njk
-title: "Eleventy SCSS Template"
-description: "A simple, modern static website template built with Eleventy and SCSS"
+home: true
+title: "Jonathan Wisnieski | Synergy Solutions"
+description: "Keynotes and workshops on leadership, team connection, and culture — Jonathan Wisnieski, Synergy Solutions."
 ---
 
-<div class="index">
-  INDEX
+<div class="home-top">
+    {% include "header.njk" %}
+    {% include "hero.njk" %}
 </div>
+
+<section class="home-below" id="speaking">
+    <div class="home-below__container">
+        <h2 class="home-below__title">Speaking &amp; workshops</h2>
+        <p class="home-below__lede">More content for your main page can go here — programs, testimonials, and booking details.</p>
+    </div>
+</section>
+
+<div id="watch" class="home-anchor" aria-hidden="true"></div>

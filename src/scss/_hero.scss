@@ -1,0 +1,241 @@
+@use "variables";
+@use "mixins";
+
+.hero {
+  position: relative;
+  padding: 0 0 4rem;
+  margin-top: -0.5rem;
+
+  @include mixins.responsive(variables.$breakpoint-lg) {
+    padding-bottom: 5rem;
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 2;
+    @include mixins.container;
+    padding-top: 0.5rem;
+  }
+
+  &__headline {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 0 0.25rem;
+    font-weight: 800;
+    font-size: clamp(2.75rem, 10vw, 5.75rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #fff;
+    text-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+    max-width: 18ch;
+  }
+
+  &__headline-line {
+    display: block;
+
+    &--accent {
+      font-style: italic;
+      font-weight: 700;
+      opacity: 0.95;
+    }
+  }
+
+  &__card {
+    position: relative;
+    z-index: 3;
+    margin-top: clamp(1rem, 4vw, 2.5rem);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    background: #fff;
+    border-radius: clamp(1.5rem, 4vw, 3rem);
+    box-shadow:
+      0 24px 60px rgba(26, 32, 44, 0.12),
+      0 8px 20px rgba(26, 32, 44, 0.06);
+    overflow: visible;
+
+    @include mixins.responsive(variables.$breakpoint-lg) {
+      grid-template-columns: 1fr minmax(280px, 38%);
+      align-items: stretch;
+      min-height: clamp(320px, 42vw, 420px);
+    }
+  }
+
+  &__card-body {
+    position: relative;
+    z-index: 3;
+    padding: clamp(1.75rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3rem) clamp(2rem, 5vw, 3.5rem);
+    max-width: 40rem;
+
+    @include mixins.responsive(variables.$breakpoint-lg) {
+      padding-right: 2rem;
+    }
+  }
+
+  &__subhead {
+    margin: 0 0 2rem;
+    font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+    line-height: 1.55;
+    font-weight: 600;
+    color: variables.$hero-navy;
+  }
+
+  &__circle-word {
+    position: relative;
+    display: inline-block;
+    padding: 0.05em 0.35em;
+    margin-right: 0.15em;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -0.15em -0.2em;
+      border: 3px solid variables.$accent-copper;
+      border-radius: 50%;
+      transform: rotate(-8deg) scale(1.05);
+      pointer-events: none;
+    }
+  }
+
+  &__highlight {
+    color: variables.$accent-copper;
+    font-weight: 800;
+  }
+
+  &__squiggle {
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -0.15em;
+      height: 0.55rem;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 14' fill='none'%3E%3Cpath d='M2 10 Q30 2 60 10 T118 10' stroke='%23d38350' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E")
+        center / 100% 100% no-repeat;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+
+    &--primary {
+      padding: 0.85rem 1.65rem;
+      border-radius: 999px;
+      background: variables.$primary-color;
+      color: #fff;
+
+      &:hover {
+        background: variables.$primary-color-deep;
+        color: #fff;
+      }
+    }
+
+    &--ghost {
+      color: variables.$hero-navy;
+      padding: 0.35rem 0;
+
+      &:hover {
+        color: variables.$accent-copper;
+      }
+    }
+  }
+
+  &__play {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0.45em 0 0.45em 0.75em;
+    border-color: transparent transparent transparent variables.$accent-copper;
+    flex-shrink: 0;
+  }
+
+  &__figure {
+    position: relative;
+    z-index: 4;
+    // In-flow height: mobile stack needs a floor; desktop column stretches with card
+    min-height: clamp(300px, 88vw, 440px);
+    margin: 0 -0.5rem;
+    padding: 0 1rem;
+    overflow: visible;
+
+    @include mixins.responsive(variables.$breakpoint-lg) {
+      align-self: stretch;
+      min-height: 0;
+      margin: 0 1.5rem 0 0;
+      padding: 0 0.75rem 0 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transform-origin: bottom center;
+    // Height drives scale so the portrait can extend above the card; width follows aspect ratio
+    height: clamp(380px, 118vw, 560px);
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+    object-position: bottom center;
+    filter: drop-shadow(0 20px 40px rgba(26, 32, 44, 0.2));
+    pointer-events: none;
+    z-index: 1;
+
+    @include mixins.responsive(variables.$breakpoint-lg) {
+      left: auto;
+      right: -4%;
+      transform: none;
+      height: clamp(420px, 52vw, 760px);
+    }
+  }
+
+  &__credentials {
+    position: absolute;
+    z-index: 2;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(14rem, calc(100% - 1.5rem));
+    margin: 0;
+    text-align: center;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    font-weight: 600;
+    color: variables.$hero-navy;
+    opacity: 0.88;
+    text-shadow:
+      0 0 1.25rem #fff,
+      0 0 0.75rem #fff,
+      0 1px 0 #fff;
+
+    @include mixins.responsive(variables.$breakpoint-lg) {
+      left: auto;
+      right: 0.5rem;
+      bottom: 0.4rem;
+      margin-left: 0;
+      margin-right: 0;
+      text-align: right;
+      max-width: 11rem;
+    }
+  }
+}
