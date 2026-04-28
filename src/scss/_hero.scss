@@ -170,18 +170,19 @@
 
   &__figure {
     position: relative;
-    z-index: 4;
+    // Below card-body so the portrait does not paint over the headline copy when it extends left
+    z-index: 1;
     // In-flow height: mobile stack needs a floor; desktop column stretches with card
-    min-height: clamp(300px, 88vw, 440px);
-    margin: 0 -0.5rem;
+    min-height: clamp(260px, 72vw, 380px);
+    margin: 0;
     padding: 0 1rem;
     overflow: visible;
 
     @include mixins.responsive(variables.$breakpoint-lg) {
       align-self: stretch;
       min-height: 0;
-      margin: 0 1.5rem 0 0;
-      padding: 0 0.75rem 0 0;
+      margin: 0;
+      padding: 0 clamp(0.65rem, 1.75vw, 1.125rem) 0 0;
     }
   }
 
@@ -191,10 +192,9 @@
     left: 50%;
     transform: translateX(-50%);
     transform-origin: bottom center;
-    // Height drives scale so the portrait can extend above the card; width follows aspect ratio
-    height: clamp(380px, 118vw, 560px);
+    height: clamp(300px, 90vw, 460px);
     width: auto;
-    max-width: none;
+    max-width: calc(100% - 0.25rem);
     object-fit: contain;
     object-position: bottom center;
     filter: drop-shadow(0 20px 40px rgba(26, 32, 44, 0.2));
@@ -203,20 +203,23 @@
 
     @include mixins.responsive(variables.$breakpoint-lg) {
       left: auto;
-      right: -4%;
+      right: 0;
       transform: none;
-      height: clamp(420px, 52vw, 760px);
+      max-width: 100%;
+      height: clamp(520px, 80vw, 620px);
     }
   }
 
   &__credentials {
     position: absolute;
     z-index: 2;
+    right: 0.75rem;
     bottom: 0.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(14rem, calc(100% - 1.5rem));
+    left: 0.75rem;
     margin: 0;
+    max-width: 14rem;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     font-size: 0.8rem;
     line-height: 1.45;
