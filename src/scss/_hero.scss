@@ -201,6 +201,7 @@
     filter: drop-shadow(0 20px 40px rgba(26, 32, 44, 0.2));
     pointer-events: none;
     z-index: 1;
+    border-radius: 0 0 35px 0;
 
     @include mixins.responsive(variables.$breakpoint-lg) {
       left: auto;
