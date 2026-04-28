@@ -26,8 +26,47 @@ description: "Book Jonathan Wisnieski for keynotes and workshops on leadership, 
         <p class="contact-panel__copy">
             Share your dates, audience, and goals—we’ll follow up with availability and next steps.
         </p>
-        <p class="contact-panel__note">
-            Add your inquiry form, calendar embed, or email link here.
-        </p>
+
+        <form
+            class="contact-form"
+            name="booking"
+            method="POST"
+            action="/contact/success/"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+        >
+            <input type="hidden" name="form-name" value="booking">
+
+            <p class="contact-form__honeypot">
+                <label>
+                    Don’t fill this out if you’re human:
+                    <input name="bot-field" type="text" tabindex="-1" autocomplete="off">
+                </label>
+            </p>
+
+            <div class="contact-form__field">
+                <label class="contact-form__label" for="booking-name">Name <span class="contact-form__required" aria-hidden="true">*</span></label>
+                <input class="contact-form__input" id="booking-name" name="name" type="text" autocomplete="name" required>
+            </div>
+
+            <div class="contact-form__field">
+                <label class="contact-form__label" for="booking-email">Email <span class="contact-form__required" aria-hidden="true">*</span></label>
+                <input class="contact-form__input" id="booking-email" name="email" type="email" autocomplete="email" required>
+            </div>
+
+            <div class="contact-form__field">
+                <label class="contact-form__label" for="booking-organization">Organization <span class="contact-form__optional">(optional)</span></label>
+                <input class="contact-form__input" id="booking-organization" name="organization" type="text" autocomplete="organization">
+            </div>
+
+            <div class="contact-form__field">
+                <label class="contact-form__label" for="booking-message">Tell us about your event <span class="contact-form__required" aria-hidden="true">*</span></label>
+                <textarea class="contact-form__input contact-form__textarea" id="booking-message" name="message" rows="5" required placeholder="Dates, location, audience size, format (keynote, workshop), and anything else we should know."></textarea>
+            </div>
+
+            <div class="contact-form__footer">
+                <button class="contact-form__submit" type="submit">Send inquiry</button>
+            </div>
+        </form>
     </div>
 </section>

@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "variables";
 @use "mixins";
 
@@ -96,21 +97,177 @@ $contact-hero-image: url("https://images.unsplash.com/photo-1544531586-fde5298cd
   }
 
   &__copy {
-    margin: 0 0 1rem;
+    margin: 0 0 1.75rem;
     font-size: 1.05rem;
     line-height: 1.6;
     font-weight: 600;
     color: variables.$text-color;
   }
+}
 
-  &__note {
-    margin: 0;
-    padding: 1.25rem 1.35rem;
-    font-size: 0.9rem;
-    line-height: 1.55;
+.contact-form {
+  margin: 0;
+  padding: 0;
+
+  &__honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  &__field {
+    margin-bottom: 1.25rem;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: variables.$hero-navy;
+  }
+
+  &__required {
+    color: variables.$accent-copper;
+    font-weight: 800;
+  }
+
+  &__optional {
+    font-weight: 600;
     color: variables.$light-text;
-    background: variables.$light-background;
-    border-radius: clamp(0.75rem, 2vw, 1rem);
+    font-size: 0.8rem;
+  }
+
+  &__input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.65rem 0.85rem;
+    font: inherit;
+    font-size: 1rem;
+    color: variables.$text-color;
+    background: #fff;
     border: 1px solid variables.$border-color;
+    border-radius: 0.5rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &::placeholder {
+      color: color.scale(variables.$light-text, $alpha: -25%);
+    }
+
+    &:hover {
+      border-color: color.scale(variables.$border-color, $lightness: -8%);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: variables.$primary-color;
+      box-shadow: 0 0 0 3px rgba(59, 158, 255, 0.25);
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 8rem;
+    line-height: 1.5;
+  }
+
+  &__footer {
+    margin-top: 1.75rem;
+  }
+
+  &__submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.65rem;
+    border: none;
+    border-radius: 999px;
+    background: variables.$primary-color;
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+
+    &:hover {
+      background: variables.$primary-color-deep;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 158, 255, 0.45);
+    }
+  }
+}
+
+.contact-success {
+  padding: clamp(4rem, 10vw, 7rem) 0 clamp(5rem, 12vw, 8rem);
+  background: variables.$background-color;
+
+  &__inner {
+    @include mixins.container;
+    max-width: 36rem;
+  }
+
+  &__title {
+    margin: 0 0 0.75rem;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: variables.$hero-navy;
+  }
+
+  &__copy {
+    margin: 0 0 1.75rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 600;
+    color: variables.$text-color;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+    align-items: center;
+    margin: 0;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: variables.$primary-color;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+
+    &:hover {
+      color: variables.$primary-color-deep;
+    }
+
+    &--secondary {
+      font-weight: 600;
+      color: variables.$light-text;
+      text-decoration: none;
+
+      &:hover {
+        color: variables.$text-color;
+      }
+    }
   }
 }
