@@ -173,7 +173,7 @@
     // Below card-body so the portrait does not paint over the headline copy when it extends left
     z-index: 1;
     // In-flow height: mobile stack needs a floor; desktop column stretches with card
-    min-height: clamp(260px, 72vw, 380px);
+    min-height: clamp(280px, 78vw, 400px);
     margin: 0;
     padding: 0 1rem;
     overflow: visible;
@@ -190,9 +190,10 @@
     position: absolute;
     bottom: 0;
     left: 50%;
+    // Desktop: scale() lifts the portrait past the card top when width is capped by max-width.
     transform: translateX(-50%);
     transform-origin: bottom center;
-    height: clamp(300px, 90vw, 460px);
+    height: clamp(360px, 98vw, 540px);
     width: auto;
     max-width: calc(100% - 0.25rem);
     object-fit: contain;
@@ -204,9 +205,10 @@
     @include mixins.responsive(variables.$breakpoint-lg) {
       left: auto;
       right: 0;
-      transform: none;
+      transform: scale(1.35);
+      transform-origin: bottom right;
       max-width: 100%;
-      height: clamp(520px, 80vw, 620px);
+      height: clamp(440px, 48vw, 700px);
     }
   }
 
