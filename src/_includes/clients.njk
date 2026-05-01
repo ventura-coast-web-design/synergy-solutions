@@ -1,0 +1,67 @@
+{% if clients and clients.length %}
+<section class="clients" aria-labelledby="clients-heading">
+    <div class="clients__inner">
+        <h2 id="clients-heading" class="clients__title">Organizations we’ve worked with</h2>
+
+        <div
+            class="clients-carousel"
+            data-clients-carousel
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="Client logos"
+        >
+            <div class="clients-carousel__toolbar">
+                <button
+                    type="button"
+                    class="clients-carousel__btn clients-carousel__btn--prev"
+                    data-carousel-prev
+                    aria-controls="clients-carousel-track"
+                    aria-label="Show previous client logos"
+                >
+                    <span class="clients-carousel__btn-icon" aria-hidden="true">‹</span>
+                </button>
+                <button
+                    type="button"
+                    class="clients-carousel__btn clients-carousel__btn--next"
+                    data-carousel-next
+                    aria-controls="clients-carousel-track"
+                    aria-label="Show next client logos"
+                >
+                    <span class="clients-carousel__btn-icon" aria-hidden="true">›</span>
+                </button>
+            </div>
+
+            <div class="clients-carousel__viewport">
+                <ul class="clients-carousel__track" id="clients-carousel-track">
+                    {% for client in clients %}
+                    <li class="clients-carousel__slide">
+                        <figure class="clients-carousel__figure">
+                            <div class="clients-carousel__card">
+                                {% if client.image %}
+                                <img
+                                    class="clients-carousel__img"
+                                    src="{{ client.image }}"
+                                    alt=""
+                                    width="200"
+                                    height="100"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                                {% else %}
+                                <div class="clients-carousel__fallback" aria-hidden="true">
+                                    <span class="clients-carousel__fallback-label">Logo</span>
+                                </div>
+                                {% endif %}
+                            </div>
+                            <figcaption class="clients-carousel__caption">{{ client.name }}</figcaption>
+                        </figure>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="/assets/js/clients-carousel.js" defer></script>
+{% endif %}

@@ -1,0 +1,198 @@
+@use "variables";
+@use "mixins";
+
+.clients {
+  position: relative;
+  z-index: 4;
+  padding: clamp(2rem, 5vw, 3rem) 0 clamp(2.5rem, 6vw, 4rem);
+  background: rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+  &__inner {
+    @include mixins.container;
+  }
+
+  &__title {
+    margin: 0 0 1.25rem;
+    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.82);
+  }
+}
+
+.clients-carousel {
+  position: relative;
+
+  &__toolbar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+
+    @include mixins.responsive(variables.$breakpoint-md) {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      justify-content: space-between;
+      pointer-events: none;
+      margin-bottom: 0;
+      z-index: 2;
+    }
+  }
+
+  &__btn {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    background: rgba(26, 32, 44, 0.45);
+    color: #fff;
+    cursor: pointer;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.15s ease;
+
+    &:hover {
+      background: rgba(26, 32, 44, 0.72);
+      border-color: rgba(255, 255, 255, 0.55);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 158, 255, 0.55);
+    }
+
+    &:active {
+      transform: scale(0.96);
+    }
+  }
+
+  &__btn-icon {
+    font-size: 1.35rem;
+    line-height: 1;
+    font-weight: 700;
+    margin-top: -0.08em;
+  }
+
+  &__viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    margin: 0 -0.25rem;
+    padding: 0.25rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include mixins.responsive(variables.$breakpoint-md) {
+      margin: 0 2.75rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      scroll-behavior: auto;
+    }
+  }
+
+  &__track {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: clamp(1.25rem, 4vw, 2.5rem);
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+    min-height: 8rem;
+  }
+
+  &__slide {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    width: clamp(10.5rem, 28vw, 14rem);
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  &__figure {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.55rem;
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  &__card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 1px 0 rgba(26, 32, 44, 0.06);
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: clamp(4rem, 12vw, 5.25rem);
+    max-width: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.92;
+    }
+  }
+
+  &__caption {
+    margin: 0;
+    width: 100%;
+    font-size: clamp(0.68rem, 1.8vw, 0.8rem);
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 0 1px 12px rgba(26, 32, 44, 0.35);
+  }
+
+  &__fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: clamp(4rem, 12vw, 5.25rem);
+    padding: 0.5rem;
+    border-radius: 0.35rem;
+    border: 1px dashed rgba(26, 32, 44, 0.22);
+    background: rgba(248, 250, 252, 0.95);
+  }
+
+  &__fallback-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: variables.$light-text;
+  }
+}
