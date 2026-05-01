@@ -1,0 +1,34 @@
+[
+  {
+    "name": "California Edison",
+    "image": "/assets/images/clients/edison.jpg"
+  },
+  {
+    "name": "Blue Apron",
+    "image": "/assets/images/clients/blue-apron.webp"
+  },
+  {
+    "name": "United States Army",
+    "image": "/assets/images/clients/us-army.png"
+  },
+  {
+    "name": "BMW",
+    "image": "/assets/images/clients/bmw.png"
+  },
+  {
+    "name": "Los Alamos National Laboratory",
+    "image": "/assets/images/clients/los-alamos-national-lab.png"
+  },
+  {
+    "name": "Bonipak Packing Company",
+    "image": "/assets/images/clients/bonipak.webp"
+  },
+  {
+    "name": "Los Angeles Police Federal Credit Union",
+    "image": "/assets/images/clients/lapfcu.jpg"
+  },
+  {
+    "name": "Siemens",
+    "image": "/assets/images/clients/siemens.webp"
+  }
+]
