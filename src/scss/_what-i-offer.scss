@@ -6,8 +6,26 @@
   z-index: 4;
   padding: clamp(2.25rem, 5vw, 3.25rem) 0 clamp(2rem, 5vw, 3rem);
   border-top: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 20% -20% auto;
+    height: 45%;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(
+      ellipse 70% 100% at 50% 0%,
+      rgba(211, 131, 80, 0.12) 0%,
+      transparent 65%
+    );
+    opacity: 0.9;
+  }
 
   &__inner {
+    position: relative;
+    z-index: 1;
     @include mixins.container;
     max-width: variables.$container-max-width;
   }
@@ -35,12 +53,29 @@
   }
 
   &__column {
+    position: relative;
     margin: 0;
     padding: clamp(1.25rem, 3vw, 1.75rem);
     border-radius: clamp(0.65rem, 2vw, 1rem);
-    background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.14);
     box-shadow: 0 12px 36px rgba(26, 32, 44, 0.12);
+    overflow: hidden;
+
+    &--leadership {
+      border-left: 4px solid variables.$accent-copper;
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.04) 50%),
+        radial-gradient(100% 80% at 0% 0%, rgba(211, 131, 80, 0.2) 0%, transparent 55%),
+        rgba(255, 255, 255, 0.06);
+    }
+
+    &--employees {
+      border-left: 4px solid rgba(245, 158, 11, 0.95);
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 50%),
+        radial-gradient(100% 80% at 0% 0%, rgba(245, 158, 11, 0.16) 0%, transparent 55%),
+        rgba(255, 255, 255, 0.06);
+    }
   }
 
   &__heading {
@@ -61,17 +96,35 @@
   }
 
   &__item {
+    position: relative;
     margin: 0;
-    padding: 0.55rem 0;
+    padding: 0.55rem 0 0.55rem 1.1rem;
     font-size: clamp(0.9rem, 2vw, 1rem);
     font-weight: 600;
     line-height: 1.35;
     color: rgba(255, 255, 255, 0.9);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      width: 0.35rem;
+      height: 0.35rem;
+      border-radius: 1px;
+      background: rgba(255, 255, 255, 0.35);
+      box-shadow: 0 0 0 2px rgba(211, 131, 80, 0.45);
+    }
+
     &:last-child {
       border-bottom: none;
       padding-bottom: 0;
     }
+  }
+
+  #{&}__column--employees #{&}__item::before {
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.5);
   }
 }
