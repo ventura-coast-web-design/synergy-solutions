@@ -4,13 +4,24 @@
             <a href="/" class="nav-home__brand">
                 <img src="/assets/images/logo.png" alt="Synergy Solutions — Jonathan Wisnieski" class="nav-home__logo" width="250" height="60" decoding="async">
             </a>
-            <ul class="nav-home__links">
-                <li><a href="/about" class="nav-home__link">About</a></li>
-                <li><a href="/case-studies/" class="nav-home__link">Case studies</a></li>
-                <li><a href="/#speaking" class="nav-home__link">Speaking</a></li>
-                <li><a href="/contact" class="nav-home__link">Contact</a></li>
-            </ul>
-            <a href="/contact" class="nav-home__cta">Book Jonathan</a>
+            <div class="nav-home__actions">
+                <button type="button" class="nav-home__toggle" aria-expanded="false" aria-controls="nav-home-panel" aria-label="Open menu">
+                    <span class="nav-home__toggle-bars" aria-hidden="true">
+                        <span class="nav-home__toggle-bar"></span>
+                        <span class="nav-home__toggle-bar"></span>
+                        <span class="nav-home__toggle-bar"></span>
+                    </span>
+                </button>
+            </div>
+            <div class="nav-home__panel" id="nav-home-panel">
+                <ul class="nav-home__links">
+                    <li><a href="/about" class="nav-home__link">About</a></li>
+                    <li><a href="/case-studies/" class="nav-home__link">Case studies</a></li>
+                    <li><a href="/#speaking" class="nav-home__link">Speaking</a></li>
+                    <li><a href="/contact" class="nav-home__link">Contact</a></li>
+                    <li><a href="/contact" class="nav-home__cta">Book Jonathan</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 </header>

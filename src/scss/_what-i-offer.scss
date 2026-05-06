@@ -89,6 +89,10 @@
     border-bottom: 2px solid variables.$accent-copper;
   }
 
+  #{&}__column--employees #{&}__heading {
+    border-bottom-color: rgba(245, 158, 11, 0.95);
+  }
+
   &__list {
     list-style: none;
     margin: 0;
