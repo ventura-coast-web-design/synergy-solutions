@@ -1,0 +1,53 @@
+---
+layout: base.njk
+caseStudy: true
+---
+
+<section class="case-study-hero" aria-labelledby="case-study-title">
+    <div class="case-study-hero__inner">
+        <p class="case-study-hero__eyebrow"><a href="/case-studies/">Case studies</a></p>
+        <h1 id="case-study-title" class="case-study-hero__title">{{ title }}</h1>
+        {% if subtitle %}
+            <p class="case-study-hero__subtitle">{{ subtitle }}</p>
+        {% endif %}
+    </div>
+</section>
+
+<div class="case-study-shell">
+    <div class="case-study-shell__main">
+        <article class="case-study-prose">
+            {{ content | safe }}
+        </article>
+    </div>
+    <aside class="case-study-sidebar" aria-label="At a glance">
+        <div class="case-study-sidebar__card">
+            <h2 class="case-study-sidebar__heading">At a glance</h2>
+            <dl class="case-study-meta">
+                {% if client %}
+                    <div class="case-study-meta__row">
+                        <dt class="case-study-meta__term">Client</dt>
+                        <dd class="case-study-meta__def">{{ client }}</dd>
+                    </div>
+                {% endif %}
+                {% if duration %}
+                    <div class="case-study-meta__row">
+                        <dt class="case-study-meta__term">Duration</dt>
+                        <dd class="case-study-meta__def">{{ duration }}</dd>
+                    </div>
+                {% endif %}
+                {% if scope %}
+                    <div class="case-study-meta__row">
+                        <dt class="case-study-meta__term">Scope</dt>
+                        <dd class="case-study-meta__def">{{ scope }}</dd>
+                    </div>
+                {% endif %}
+                {% if key_focus %}
+                    <div class="case-study-meta__row">
+                        <dt class="case-study-meta__term">Key focus</dt>
+                        <dd class="case-study-meta__def">{{ key_focus }}</dd>
+                    </div>
+                {% endif %}
+            </dl>
+        </div>
+    </aside>
+</div>

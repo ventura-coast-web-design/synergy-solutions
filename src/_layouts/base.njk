@@ -16,7 +16,7 @@
         {% include "../_includes/header-inner.njk" %}
     {% endif %}
 
-    <main class="site-main{% if home %} site-main--home{% endif %}{% if contact %} site-main--contact{% endif %}">
+    <main class="site-main{% if home %} site-main--home{% endif %}{% if contact %} site-main--contact{% endif %}{% if caseStudy %} site-main--case-study{% endif %}">
         {{ content | safe }}
     </main>
 

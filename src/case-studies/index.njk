@@ -1,0 +1,40 @@
+---
+layout: base.njk
+title: "Case studies | Synergy Solutions"
+description: "Real engagements: how Synergy Solutions aligns leadership with strategy through keynotes, workshops, and executive programs."
+permalink: "/case-studies/index.html"
+---
+
+<section class="case-studies-index-hero" aria-labelledby="case-studies-heading">
+    <div class="case-studies-index-hero__inner">
+        <h1 id="case-studies-heading" class="case-studies-index-hero__title">Case studies</h1>
+        <p class="case-studies-index-hero__lede">
+            Outcomes from engagements where leadership, culture, and execution had to move together — told with the metrics and narrative executives expect.
+        </p>
+    </div>
+</section>
+
+<div class="case-studies-index-list">
+    {% if collections.caseStudies | length %}
+        <ul class="case-studies-cards">
+            {% for study in collections.caseStudies %}
+                <li class="case-studies-cards__item">
+                    <article class="case-study-card">
+                        <h2 class="case-study-card__title">
+                            <a href="{{ study.url }}" class="case-study-card__link">{{ study.data.title }}</a>
+                        </h2>
+                        {% if study.data.subtitle %}
+                            <p class="case-study-card__subtitle">{{ study.data.subtitle }}</p>
+                        {% endif %}
+                        {% if study.data.client %}
+                            <p class="case-study-card__meta">{{ study.data.client }}</p>
+                        {% endif %}
+                        <a href="{{ study.url }}" class="case-study-card__cta">Read the study</a>
+                    </article>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="case-studies-index-empty">Case studies will appear here as they are published.</p>
+    {% endif %}
+</div>
