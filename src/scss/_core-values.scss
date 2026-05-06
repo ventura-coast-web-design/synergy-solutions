@@ -1,0 +1,320 @@
+@use "variables";
+@use "mixins";
+
+.core-values {
+  position: relative;
+  z-index: 4;
+  padding: clamp(2rem, 5vw, 3rem) 0 clamp(2.25rem, 5vw, 3.25rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+
+  // Soft ambient shapes so the section reads less like a flat blue slab
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.45;
+
+    @media (prefers-reduced-motion: reduce) {
+      opacity: 0.32;
+    }
+  }
+
+  &::before {
+    width: min(72vw, 520px);
+    height: min(72vw, 520px);
+    top: -18%;
+    right: -12%;
+    background: radial-gradient(
+      circle at 40% 40%,
+      rgba(211, 131, 80, 0.55) 0%,
+      rgba(245, 158, 11, 0.15) 45%,
+      transparent 70%
+    );
+  }
+
+  &::after {
+    width: min(55vw, 400px);
+    height: min(55vw, 400px);
+    bottom: -8%;
+    left: -10%;
+    background: radial-gradient(
+      circle at 60% 60%,
+      rgba(123, 200, 255, 0.35) 0%,
+      rgba(255, 255, 255, 0.08) 50%,
+      transparent 68%
+    );
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    @include mixins.container;
+    max-width: variables.$container-max-width;
+  }
+
+  &__title {
+    margin: 0 0 clamp(0.85rem, 2vw, 1.1rem);
+    font-size: clamp(1.75rem, 4vw, 2.35rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+  }
+
+  &__intro {
+    margin: 0 auto clamp(1.75rem, 4vw, 2.5rem);
+    max-width: 42rem;
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    font-weight: 500;
+    line-height: 1.55;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  &__pillar-grid {
+    display: grid;
+    gap: clamp(1.25rem, 3vw, 1.75rem);
+    margin-bottom: clamp(2rem, 5vw, 2.75rem);
+
+    @include mixins.responsive(variables.$breakpoint-md) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
+    }
+  }
+
+  &__pillar {
+    position: relative;
+    margin: 0;
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+    padding-right: clamp(1.25rem, 4vw, 2.5rem);
+    border-radius: clamp(0.65rem, 2vw, 1rem);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 12px 36px rgba(26, 32, 44, 0.12);
+    overflow: hidden;
+
+    &--mission {
+      background:
+        linear-gradient(155deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.04) 42%),
+        linear-gradient(125deg, rgba(211, 131, 80, 0.22) 0%, transparent 55%);
+    }
+
+    &--vision {
+      background:
+        linear-gradient(155deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 45%),
+        linear-gradient(115deg, rgba(245, 158, 11, 0.18) 0%, transparent 52%);
+    }
+  }
+
+  &__pillar-watermark {
+    position: absolute;
+    right: clamp(-0.25rem, -1vw, 0.15rem);
+    bottom: clamp(-0.85rem, -3vw, -0.35rem);
+    font-size: clamp(5.5rem, 20vw, 9rem);
+    font-weight: 800;
+    line-height: 0.8;
+    letter-spacing: -0.07em;
+    pointer-events: none;
+    user-select: none;
+    color: rgba(255, 255, 255, 0.07);
+  }
+
+  &__pillar--mission &__pillar-watermark {
+    color: rgba(211, 131, 80, 0.22);
+  }
+
+  &__pillar--vision &__pillar-watermark {
+    color: rgba(245, 158, 11, 0.2);
+  }
+
+  &__pillar-label {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 0.75rem;
+    padding-bottom: 0.55rem;
+    font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.96);
+    border-bottom: 2px solid variables.$accent-copper;
+  }
+
+  &__pillar-text {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-weight: 500;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  &__values-heading {
+    margin: 0 0 clamp(1.25rem, 3vw, 1.75rem);
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: #fff;
+  }
+
+  &__grid {
+    display: grid;
+    gap: clamp(1rem, 2.5vw, 1.35rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include mixins.responsive(variables.$breakpoint-sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include mixins.responsive(variables.$breakpoint-lg) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  // Per-card warm accents (readable on the home gradient, distinct from each other)
+  &__card[data-accent="1"] {
+    --cv-accent: #{variables.$accent-copper};
+    --cv-accent-soft: rgba(211, 131, 80, 0.28);
+  }
+
+  &__card[data-accent="2"] {
+    --cv-accent: #e8b86a;
+    --cv-accent-soft: rgba(232, 184, 106, 0.28);
+  }
+
+  &__card[data-accent="3"] {
+    --cv-accent: #e8a090;
+    --cv-accent-soft: rgba(232, 160, 144, 0.26);
+  }
+
+  &__card[data-accent="4"] {
+    --cv-accent: #7ec8e3;
+    --cv-accent-soft: rgba(126, 200, 227, 0.22);
+  }
+
+  &__card[data-accent="5"] {
+    --cv-accent: #f4d35e;
+    --cv-accent-soft: rgba(244, 211, 94, 0.22);
+  }
+
+  &__card[data-accent="6"] {
+    --cv-accent: #ee964b;
+    --cv-accent-soft: rgba(238, 150, 75, 0.26);
+  }
+
+  &__card[data-accent="7"] {
+    --cv-accent: #d4b896;
+    --cv-accent-soft: rgba(212, 184, 150, 0.28);
+  }
+
+  &__card {
+    --cv-accent: #{variables.$accent-copper};
+    --cv-accent-soft: rgba(211, 131, 80, 0.25);
+
+    position: relative;
+    margin: 0;
+    padding: clamp(1.1rem, 2.5vw, 1.4rem);
+    padding-left: clamp(1rem, 2.2vw, 1.25rem);
+    border-radius: clamp(0.65rem, 2vw, 1rem);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-left: 4px solid var(--cv-accent);
+    background:
+      linear-gradient(165deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 55%),
+      radial-gradient(120% 80% at 0% 0%, var(--cv-accent-soft) 0%, transparent 55%),
+      rgba(255, 255, 255, 0.04);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    column-gap: clamp(0.65rem, 2vw, 0.95rem);
+    row-gap: 0.45rem;
+    align-items: start;
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      opacity: 0;
+      background: linear-gradient(120deg, transparent 40%, rgba(255, 255, 255, 0.07) 50%, transparent 60%);
+      transition: opacity 0.35s ease;
+    }
+
+    &:hover {
+      background:
+        linear-gradient(165deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.05) 55%),
+        radial-gradient(120% 80% at 0% 0%, var(--cv-accent-soft) 0%, transparent 58%),
+        rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.22);
+      border-left-color: var(--cv-accent);
+      box-shadow:
+        0 14px 36px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(255, 255, 255, 0.06);
+      transform: translateY(-2px);
+
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: border-color 0.2s ease, background 0.2s ease;
+
+      &:hover {
+        transform: none;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &__card-mark {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: start;
+    margin-top: 0.1em;
+    font-size: clamp(1.65rem, 4.5vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.14);
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.15);
+  }
+
+  &__card-title {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+
+  &__card-text {
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0;
+    font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+    font-weight: 500;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.86);
+  }
+}
