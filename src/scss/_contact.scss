@@ -1,9 +1,6 @@
 @use "variables";
 @use "mixins";
 
-// Full-bleed hero background (speaker / audience — Unsplash)
-$contact-hero-image: url("https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-
 .contact-hero {
   position: relative;
   display: flex;
@@ -14,17 +11,30 @@ $contact-hero-image: url("https://images.unsplash.com/photo-1544531586-fde5298cd
   &__media {
     position: absolute;
     inset: 0;
-    background: $contact-hero-image center / cover no-repeat;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   &__scrim {
     position: absolute;
     inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    /* Darken enough for white text (especially on the left where copy sits). */
     background: linear-gradient(
       135deg,
-      rgba(26, 32, 44, 0.88) 0%,
-      rgba(26, 32, 44, 0.62) 42%,
-      rgba(45, 58, 92, 0.45) 100%
+      rgba(26, 32, 44, 0.85) 0%,
+      rgba(26, 32, 44, 0.72) 35%,
+      rgba(45, 58, 92, 0.58) 100%
     );
   }
 
@@ -43,7 +53,8 @@ $contact-hero-image: url("https://images.unsplash.com/photo-1544531586-fde5298cd
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.72);
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
   }
 
   &__title {
@@ -54,7 +65,9 @@ $contact-hero-image: url("https://images.unsplash.com/photo-1544531586-fde5298cd
     line-height: 0.98;
     letter-spacing: -0.03em;
     color: #fff;
-    text-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+    text-shadow:
+      0 2px 24px rgba(0, 0, 0, 0.55),
+      0 12px 48px rgba(0, 0, 0, 0.35);
     max-width: 15ch;
   }
 
@@ -74,8 +87,10 @@ $contact-hero-image: url("https://images.unsplash.com/photo-1544531586-fde5298cd
     font-size: clamp(1.05rem, 2.2vw, 1.3rem);
     line-height: 1.55;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.92);
-    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+    color: rgba(255, 255, 255, 0.94);
+    text-shadow:
+      0 1px 4px rgba(0, 0, 0, 0.45),
+      0 4px 28px rgba(0, 0, 0, 0.4);
   }
 }
 
