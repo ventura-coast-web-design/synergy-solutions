@@ -182,7 +182,8 @@
       align-self: stretch;
       min-height: 0;
       margin: 0;
-      padding: 0 clamp(0.65rem, 1.75vw, 1.125rem) 0 0;
+      /* Room so the credentials pill clears the card corner + home-top overflow clip */
+      padding: 0 1.35rem 0.85rem 0;
     }
   }
 
@@ -216,32 +217,34 @@
   &__credentials {
     position: absolute;
     z-index: 2;
-    right: 0.75rem;
-    bottom: 0.5rem;
-    left: 0.75rem;
+    left: 50%;
+    bottom: 0.65rem;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    width: max-content;
+    max-width: calc(100% - 2rem);
     margin: 0;
-    max-width: 14rem;
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
-    font-size: 0.8rem;
-    line-height: 1.45;
+    font-size: 0.78rem;
+    line-height: 1.5;
     font-weight: 600;
     color: variables.$hero-navy;
-    opacity: 0.88;
-    text-shadow:
-      0 0 1.25rem #fff,
-      0 0 0.75rem #fff,
-      0 1px 0 #fff;
+    padding: 0.65rem 1.35rem;
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 9999px;
+    border: 1px solid rgba(26, 32, 44, 0.06);
+    box-shadow: 0 4px 18px rgba(26, 32, 44, 0.12);
 
     @include mixins.responsive(variables.$breakpoint-lg) {
       left: auto;
-      right: 0.5rem;
-      bottom: 0.4rem;
+      right: 1rem;
+      bottom: 1rem;
+      transform: none;
       margin-left: 0;
       margin-right: 0;
       text-align: right;
-      max-width: 11rem;
+      max-width: min(17.5rem, calc(100% - 1.5rem));
+      padding: 0.65rem 1.4rem 0.65rem 1.5rem;
     }
   }
 }
