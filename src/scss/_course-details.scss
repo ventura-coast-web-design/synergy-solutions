@@ -1,0 +1,105 @@
+@use "variables";
+@use "mixins";
+
+.course-details {
+  background: variables.$background-color;
+
+  &__inner {
+    @include mixins.container;
+    max-width: variables.$container-max-width;
+    padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(2.5rem, 6vw, 4rem);
+  }
+
+  &__page-title {
+    margin: 0 0 clamp(1.25rem, 3vw, 2rem);
+    font-size: clamp(1.65rem, 4vw, 2.25rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: variables.$hero-navy;
+  }
+
+  &__column-headers {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+    padding-bottom: clamp(0.85rem, 2.5vw, 1.25rem);
+    border-bottom: 2px solid rgba(30, 41, 59, 0.12);
+
+    @include mixins.responsive(variables.$breakpoint-md) {
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem clamp(1.5rem, 4vw, 3rem);
+      align-items: baseline;
+    }
+  }
+
+  &__column-header {
+    margin: 0;
+    font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: variables.$hero-navy;
+    text-align: center;
+
+    @include mixins.responsive(variables.$breakpoint-md) {
+      text-align: left;
+
+      &--leadership {
+        text-align: right;
+      }
+    }
+  }
+
+  &__pairs {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 5vw, 3rem);
+  }
+
+  &__pair {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.25rem, 4vw, 2rem);
+
+    @include mixins.responsive(variables.$breakpoint-md) {
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(1.25rem, 3vw, 2rem) clamp(1.5rem, 4vw, 3rem);
+      align-items: start;
+    }
+  }
+
+  &__track {
+    margin: 0;
+    padding: 0;
+    border: none;
+    min-width: 0;
+  }
+
+  &__heading {
+    margin: 0 0 0.65rem;
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: variables.$hero-navy;
+    border-left: 4px solid variables.$primary-color;
+    padding-left: 0.75rem;
+
+    &--leadership {
+      border-left-color: variables.$accent-copper;
+    }
+  }
+
+  &__prose {
+    margin: 0;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-weight: 500;
+    line-height: 1.65;
+    color: variables.$text-color;
+
+    p {
+      margin: 0;
+    }
+  }
+}
