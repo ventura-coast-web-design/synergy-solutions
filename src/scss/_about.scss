@@ -1,1 +1,262 @@
 @use "variables";
+@use "mixins";
+
+@mixin about-diamond-li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    position: relative;
+    margin: 0 0 0.5rem;
+    padding-left: 1.2rem;
+    font-size: clamp(0.875rem, 1.6vw, 0.95rem);
+    line-height: 1.45;
+    color: variables.$text-color;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &::before {
+      content: "❖";
+      position: absolute;
+      left: 0;
+      top: 0.05em;
+      font-size: 0.65em;
+      line-height: 1;
+      color: variables.$accent-copper;
+    }
+  }
+}
+
+.about-page {
+  background: variables.$background-color;
+  color: variables.$text-color;
+
+  &__inner {
+    max-width: variables.$container-max-width;
+    margin: 0 auto;
+    padding: clamp(2.35rem, 5.5vw, 3.75rem) clamp(1.5rem, 6vw, 2.75rem)
+      clamp(3.75rem, 9vw, 6.25rem);
+  }
+
+  &__masthead {
+    margin-bottom: clamp(2.5rem, 6vw, 3.75rem);
+    padding: clamp(0.35rem, 1.5vw, 0.85rem) 0 clamp(1.75rem, 4vw, 2.75rem);
+    border-bottom: 1px solid variables.$border-color;
+  }
+
+  &__title {
+    margin: 0 0 0.65rem;
+    font-size: clamp(1.85rem, 4.5vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+    color: variables.$hero-navy;
+  }
+
+  &__lede {
+    margin: 0;
+    max-width: 40rem;
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    line-height: 1.55;
+    font-weight: 600;
+    color: variables.$light-text;
+  }
+
+  &__layout {
+    display: grid;
+    gap: clamp(2.35rem, 5.5vw, 3.5rem);
+
+    @include mixins.responsive(variables.$breakpoint-lg) {
+      grid-template-columns: minmax(17rem, 20rem) minmax(0, 1fr);
+      align-items: start;
+      gap: clamp(2.35rem, 4.5vw, 4rem);
+    }
+  }
+}
+
+.about-sidebar {
+  padding: clamp(1.25rem, 3vw, 1.65rem);
+  border-radius: clamp(0.5rem, 1.5vw, 0.75rem);
+  border: 1px solid variables.$border-color;
+  background: variables.$light-background;
+  box-shadow: 0 1px 0 rgba(30, 41, 59, 0.06);
+
+  @include mixins.responsive(variables.$breakpoint-lg) {
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  &__block {
+    margin-top: clamp(1.15rem, 3vw, 1.5rem);
+    padding-top: clamp(1rem, 2.5vw, 1.25rem);
+    border-top: 1px solid rgba(30, 41, 59, 0.1);
+
+    &:first-of-type {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+  }
+
+  &__heading {
+    margin: 0 0 0.65rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: variables.$hero-navy;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: clamp(0.9rem, 1.6vw, 0.98rem);
+    line-height: 1.5;
+    font-weight: 600;
+    color: variables.$text-color;
+  }
+}
+
+.about-profile {
+  margin-bottom: clamp(1rem, 2.5vw, 1.35rem);
+  padding-bottom: clamp(1rem, 2.5vw, 1.35rem);
+  border-bottom: 1px solid rgba(30, 41, 59, 0.1);
+
+  &__name {
+    margin: 0 0 0.35rem;
+    font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: variables.$hero-navy;
+  }
+
+  &__role {
+    margin: 0 0 0.35rem;
+    font-size: clamp(0.88rem, 1.6vw, 0.95rem);
+    font-weight: 700;
+    color: variables.$accent-copper;
+  }
+
+  &__location {
+    margin: 0 0 0.65rem;
+    font-size: clamp(0.85rem, 1.5vw, 0.92rem);
+    line-height: 1.45;
+    color: variables.$light-text;
+  }
+
+  &__link {
+    display: inline-block;
+    font-size: clamp(0.82rem, 1.5vw, 0.9rem);
+    font-weight: 600;
+    word-break: break-all;
+    color: variables.$primary-color-deep;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+
+    &:hover {
+      color: variables.$primary-color;
+    }
+
+    &:focus-visible {
+      outline: none;
+      border-radius: 0.15rem;
+      box-shadow: 0 0 0 3px rgba(59, 158, 255, 0.45);
+    }
+  }
+}
+
+.about-list {
+  @include about-diamond-li;
+
+  &--tight li {
+    margin-bottom: 0.35rem;
+  }
+}
+
+.about-main {
+  min-width: 0;
+
+  &__bio {
+    margin-bottom: clamp(2.5rem, 5.5vw, 3.5rem);
+    padding: clamp(1.5rem, 4vw, 2.5rem) 0;
+  }
+
+  &__section-title {
+    margin: 0 0 clamp(1.25rem, 3vw, 1.65rem);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: variables.$hero-navy;
+  }
+
+  &__subhead {
+    margin: clamp(1.35rem, 3vw, 1.75rem) 0 0.65rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: variables.$secondary-color;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  &__lists {
+    margin-bottom: clamp(2rem, 4vw, 2.75rem);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.about-prose {
+  p {
+    margin: 0 0 1rem;
+    font-size: clamp(0.95rem, 1.85vw, 1.05rem);
+    line-height: 1.65;
+    color: variables.$text-color;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.about-quote {
+  margin: clamp(1.35rem, 3vw, 1.85rem) 0 0;
+  padding: clamp(1rem, 2.5vw, 1.35rem) clamp(1rem, 2.5vw, 1.35rem)
+    clamp(1rem, 2.5vw, 1.25rem) clamp(1rem, 2.5vw, 1.35rem);
+  border-left: 4px solid variables.$accent-copper;
+  border-radius: 0 clamp(0.45rem, 1.2vw, 0.65rem) clamp(0.45rem, 1.2vw, 0.65rem) 0;
+  background: rgba(211, 131, 80, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(211, 131, 80, 0.12);
+
+  p {
+    margin: 0;
+    font-size: clamp(0.95rem, 1.85vw, 1.05rem);
+    line-height: 1.65;
+    font-style: italic;
+    color: variables.$hero-navy;
+  }
+}
+
+.about-columns {
+  @include about-diamond-li;
+
+  display: grid;
+  gap: 0.45rem 1.25rem;
+  grid-template-columns: 1fr;
+
+  @include mixins.responsive(variables.$breakpoint-sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include mixins.responsive(variables.$breakpoint-lg) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
