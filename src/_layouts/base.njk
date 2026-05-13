@@ -23,5 +23,8 @@
     {% include "../_includes/footer.njk" %}
     <script src="/assets/js/site-nav.js" defer></script>
     <script src="/assets/js/services-section.js" defer></script>
+    {% if about %}
+    <script src="/assets/js/about-trainer-tabs.js" defer></script>
+    {% endif %}
 </body>
 </html>
