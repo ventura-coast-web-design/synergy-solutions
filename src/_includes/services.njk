@@ -3,7 +3,7 @@
     <div class="services__inner">
         <h2 id="services-heading" class="services__title">Services</h2>
         <p class="services__lede">Programs tailored to leaders, teams, and organizations—delivered with energy and practical tools.</p>
-        <ul class="services__list" role="list">
+        <ul class="services__list">
             {% for service in services %}
             {% if loop.index0 < 3 %}
             <li class="services__item"><span class="services__label">{{ service.title }}</span></li>
