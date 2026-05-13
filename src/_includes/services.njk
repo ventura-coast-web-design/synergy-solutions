@@ -4,18 +4,14 @@
         <h2 id="services-heading" class="services__title">Services</h2>
         <p class="services__lede">Programs tailored to leaders, teams, and organizations—delivered with energy and practical tools.</p>
         <ul class="services__list" role="list">
-            <li class="services__item"><span class="services__label">Executive Coaching</span></li>
-            <li class="services__item"><span class="services__label">Leadership Coaching</span></li>
-            <li class="services__item"><span class="services__label">Coaching Circles</span></li>
-            <li class="services__item"><span class="services__label">Keynotes</span></li>
-            <li class="services__item"><span class="services__label">Leadership Training</span></li>
-            <li class="services__item"><span class="services__label">Sales Training</span></li>
-            <li class="services__item"><span class="services__label">Presentations Training</span></li>
-            <li class="services__item"><span class="services__label">Communication Training</span></li>
-            <li class="services__item"><span class="services__label">Team Building</span></li>
-            <li class="services__item"><span class="services__label">Executive Retreats</span></li>
-            <li class="services__item"><span class="services__label">Train the Trainer programs</span></li>
-            <li class="services__item"><span class="services__label">Safety Training</span></li>
+            {% for service in services %}
+            {% if loop.index0 < 3 %}
+            <li class="services__item"><span class="services__label">{{ service.title }}</span></li>
+            {% endif %}
+            {% endfor %}
         </ul>
+        <div class="services__cta">
+            <a href="/services/" class="services__cta-button">View all services</a>
+        </div>
     </div>
 </section>

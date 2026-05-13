@@ -1,0 +1,35 @@
+---
+layout: base.njk
+servicesPage: true
+permalink: "/services/"
+title: "Services | Synergy Solutions"
+description: "Executive coaching, keynotes, retreats, team building, leadership and sales training, and more—tailored programs for leaders and organizations."
+---
+
+<div class="services-page">
+    <div class="services-page__inner">
+        <header class="services-page__header">
+            <h1 id="services-page-heading" class="services-page__title">Services</h1>
+            <p class="services-page__lede">
+                Programs tailored to leaders, teams, and organizations—delivered with energy, structure, and tools your people can apply immediately.
+            </p>
+        </header>
+
+        <div class="services-page__grid">
+            {% for service in services %}
+            <article class="services-page__card">
+                <h2 class="services-page__card-title">{{ service.title }}</h2>
+                <p class="services-page__card-text">{{ service.description }}</p>
+            </article>
+            {% endfor %}
+        </div>
+
+        <section class="services-page__cta" aria-labelledby="services-book-heading">
+            <h2 id="services-book-heading" class="services-page__cta-title">Bring a program to your team</h2>
+            <p class="services-page__cta-copy">
+                Share your goals, audience, and timing—Jonathan will follow up with options and next steps.
+            </p>
+            <a href="/contact" class="services-page__cta-button">Book Jonathan</a>
+        </section>
+    </div>
+</div>
