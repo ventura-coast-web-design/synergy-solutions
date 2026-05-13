@@ -133,6 +133,11 @@
       box-shadow: 0 0 0 3px rgba(59, 158, 255, 0.35);
       border-radius: 0.35rem;
     }
+
+    // `hidden` must win over `.about-page__layout { display: grid }` on the same element.
+    &[hidden] {
+      display: none !important;
+    }
   }
 }
 

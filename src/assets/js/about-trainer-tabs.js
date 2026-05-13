@@ -17,11 +17,8 @@
       tab.tabIndex = selected ? 0 : -1;
       var panel = panels[i];
       if (!panel) return;
-      if (selected) {
-        panel.removeAttribute("hidden");
-      } else {
-        panel.setAttribute("hidden", "hidden");
-      }
+      panel.hidden = !selected;
+      panel.setAttribute("aria-hidden", selected ? "false" : "true");
     });
   }
 
@@ -56,4 +53,13 @@
       }
     });
   }
+
+  var initial = -1;
+  for (var j = 0; j < tabs.length; j++) {
+    if (tabs[j].getAttribute("aria-selected") === "true") {
+      initial = j;
+      break;
+    }
+  }
+  selectTab(initial >= 0 ? initial : 0);
 })();
