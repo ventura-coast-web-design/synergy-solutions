@@ -106,9 +106,16 @@
     @media (prefers-reduced-motion: reduce) {
       scroll-behavior: auto;
     }
+
+    /* Infinite loop script corrects scrollLeft; smooth + snap fight mid-scroll corrections. */
+    &--loop {
+      scroll-behavior: auto;
+      scroll-snap-type: none;
+    }
   }
 
   &__track {
+    position: relative;
     display: flex;
     flex-wrap: nowrap;
     align-items: stretch;
