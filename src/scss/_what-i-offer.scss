@@ -51,82 +51,79 @@
   }
 
   &__content {
-    display: grid;
-    gap: clamp(1.75rem, 5vw, 2.75rem);
-
-    @include mixins.responsive(variables.$breakpoint-md) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: clamp(2rem, 5vw, 3.5rem);
-      align-items: start;
-    }
+    display: block;
   }
 
-  &__column {
+  &__summary {
+    max-width: 40rem;
+    margin-inline: auto;
     position: relative;
-    margin: 0;
-    padding: clamp(1.25rem, 3vw, 1.75rem);
+    padding: clamp(1.35rem, 3.5vw, 1.85rem);
     border-radius: clamp(0.65rem, 2vw, 1rem);
     border: 1px solid rgba(255, 255, 255, 0.14);
+    border-left: 4px solid variables.$accent-copper;
     box-shadow: 0 12px 36px rgba(26, 32, 44, 0.12);
-    overflow: hidden;
-
-    &--leadership {
-      border-left: 4px solid variables.$accent-copper;
-      background:
-        linear-gradient(160deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.04) 50%),
-        radial-gradient(100% 80% at 0% 0%, rgba(211, 131, 80, 0.2) 0%, transparent 55%),
-        rgba(255, 255, 255, 0.06);
-    }
-
-    &--employees {
-      border-left: 4px solid rgba(245, 158, 11, 0.95);
-      background:
-        linear-gradient(160deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 50%),
-        radial-gradient(100% 80% at 0% 0%, rgba(245, 158, 11, 0.16) 0%, transparent 55%),
-        rgba(255, 255, 255, 0.06);
-    }
+    background:
+      linear-gradient(160deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.04) 50%),
+      radial-gradient(100% 80% at 0% 0%, rgba(211, 131, 80, 0.18) 0%, transparent 55%),
+      rgba(255, 255, 255, 0.06);
   }
 
-  &__heading {
+  &__lede {
     margin: 0 0 1rem;
-    padding-bottom: 0.65rem;
-    font-size: clamp(1rem, 2vw, 1.15rem);
+    font-size: clamp(1rem, 2.2vw, 1.12rem);
+    font-weight: 600;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  &__body {
+    margin: 0 0 1.35rem;
+    font-size: clamp(0.92rem, 2vw, 1.02rem);
+    font-weight: 500;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.86);
+
+    strong {
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.96);
+    }
+  }
+
+  &__variety-label {
+    margin: 0 0 0.5rem;
+    font-size: clamp(0.72rem, 1.5vw, 0.78rem);
     font-weight: 800;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.96);
-    border-bottom: 2px solid variables.$accent-copper;
+    color: rgba(255, 255, 255, 0.72);
   }
 
-  #{&}__column--employees #{&}__heading {
-    border-bottom-color: rgba(245, 158, 11, 0.95);
-  }
-
-  &__list {
+  &__highlights {
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
-  &__item {
+  &__highlights li {
     position: relative;
     margin: 0;
-    padding: 0.55rem 0 0.55rem 1.1rem;
-    font-size: clamp(0.9rem, 2vw, 1rem);
+    padding: 0.5rem 0 0.5rem 1.05rem;
+    font-size: clamp(0.88rem, 1.9vw, 0.98rem);
     font-weight: 600;
-    line-height: 1.35;
-    color: rgba(255, 255, 255, 0.9);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.88);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
     &::before {
       content: "";
       position: absolute;
       left: 0;
-      top: 50%;
-      transform: translateY(-50%) rotate(45deg);
-      width: 0.35rem;
-      height: 0.35rem;
+      top: 0.85em;
+      width: 0.3rem;
+      height: 0.3rem;
       border-radius: 1px;
+      transform: rotate(45deg);
       background: rgba(255, 255, 255, 0.35);
       box-shadow: 0 0 0 2px rgba(211, 131, 80, 0.45);
     }
@@ -135,10 +132,6 @@
       border-bottom: none;
       padding-bottom: 0;
     }
-  }
-
-  #{&}__column--employees #{&}__item::before {
-    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.5);
   }
 
   &__cta {
