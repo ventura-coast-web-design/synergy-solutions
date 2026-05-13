@@ -21,19 +21,32 @@
                 </div>
             </div>
 
-            <div class="hero__figure">
+            <div class="hero__figure" data-hero-rotate>
                 <img
                     src="/assets/images/jonny.png"
-                    alt="Jonathan Wisnieski, keynote speaker"
-                    class="hero__photo"
+                    alt="Jonathan Wisniewski, keynote speaker"
+                    class="hero__photo hero__photo--active"
+                    data-hero-photo="0"
                     width="520"
                     height="640"
                     decoding="async"
+                    fetchpriority="high"
                 >
-                <p class="hero__credentials">
-                    Keynote speaker<br>
-                    Leadership &amp; team culture<br>
-                    Employee engagement
+                <img
+                    src="/assets/images/alison.png"
+                    alt="Alison Matthey, facilitator and executive coach"
+                    class="hero__photo"
+                    data-hero-photo="1"
+                    width="520"
+                    height="520"
+                    decoding="async"
+                    loading="eager"
+                    aria-hidden="true"
+                >
+                <p class="hero__credentials" aria-live="polite">
+                    <span class="hero__cred-name">Jonathan Wisniewski</span><br>
+                    <span class="hero__cred-line2">Keynote speaker</span><br>
+                    <span class="hero__cred-line3">Employee engagement</span>
                 </p>
             </div>
         </div>
