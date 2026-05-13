@@ -1,5 +1,22 @@
 <footer class="site-footer">
-    <div class="footer__container">
-        <p>&copy; {{ page.date.getFullYear() if page.date else '2026' }} Synergy Solutions. All rights reserved.</p>
+    <div class="footer__inner">
+        <div class="footer__brand">
+            <span class="footer__brand-name">Synergy Solutions</span>
+            <span class="footer__brand-tag">Leadership &amp; team development</span>
+        </div>
+        <div class="footer__meta">
+            <p class="footer__copyright">
+                &copy; {{ page.date.getFullYear() if page.date else '2026' }} Synergy Solutions. All rights reserved.
+            </p>
+            <p class="footer__credit">
+                Built by
+                <a
+                    href="https://venturacoastwebdesign.com/"
+                    class="footer__credit-link"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                >Ventura Coast Web Design</a>
+            </p>
+        </div>
     </div>
-</footer> 
+</footer>
