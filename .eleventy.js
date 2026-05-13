@@ -15,8 +15,18 @@ module.exports = function(eleventyConfig) {
 
   // Copy static assets
   eleventyConfig.addPassthroughCopy("src/assets");
-  eleventyConfig.addPassthroughCopy("src/favicon.ico");
   eleventyConfig.addPassthroughCopy("src/css");
+  [
+    "favicon.ico",
+    "favicon.svg",
+    "favicon-96x96.png",
+    "apple-touch-icon.png",
+    "site.webmanifest",
+    "web-app-manifest-192x192.png",
+    "web-app-manifest-512x512.png",
+  ].forEach(function (f) {
+    eleventyConfig.addPassthroughCopy("src/" + f);
+  });
 
   // Watch for CSS changes
   eleventyConfig.addWatchTarget("./src/css/main.css");
