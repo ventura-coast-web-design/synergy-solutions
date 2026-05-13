@@ -13,6 +13,17 @@
     max-width: variables.$container-max-width;
   }
 
+  &__quotes {
+    display: grid;
+    gap: clamp(1rem, 2.5vw, 1.5rem);
+    grid-template-columns: 1fr;
+
+    @media (min-width: variables.$breakpoint-lg) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
+    }
+  }
+
   &__title {
     margin: 0 0 clamp(1.25rem, 4vw, 2rem);
     font-size: clamp(0.8rem, 1.5vw, 0.95rem);
@@ -24,10 +35,11 @@
   }
 
   &__quote {
-    margin: 0 auto;
-    padding: clamp(1.35rem, 4vw, 2rem) clamp(1.25rem, 4vw, 2rem)
-      clamp(1.25rem, 3.5vw, 1.75rem);
-    max-width: 52rem;
+    margin: 0;
+    padding: clamp(1rem, 2.5vw, 1.35rem) clamp(1rem, 2.5vw, 1.35rem)
+      clamp(1rem, 2.5vw, 1.35rem);
+    max-width: none;
+    min-width: 0;
     border-radius: clamp(0.65rem, 2vw, 1rem);
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-left: 4px solid variables.$accent-copper;
@@ -38,14 +50,14 @@
     box-shadow: 0 12px 36px rgba(26, 32, 44, 0.18);
 
     p {
-      margin: 0 0 1rem;
-      font-size: clamp(1rem, 2.2vw, 1.125rem);
+      margin: 0 0 0.65rem;
+      font-size: clamp(0.8125rem, 1.35vw, 0.9375rem);
       font-weight: 500;
-      line-height: 1.65;
+      line-height: 1.55;
       color: rgba(255, 255, 255, 0.94);
 
       &:last-of-type {
-        margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+        margin-bottom: clamp(0.85rem, 2vw, 1.1rem);
       }
     }
   }
@@ -53,14 +65,14 @@
   &__footer {
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
-    padding-top: clamp(1rem, 2.5vw, 1.25rem);
+    gap: 0.25rem;
+    padding-top: clamp(0.65rem, 1.75vw, 0.85rem);
     border-top: 1px solid rgba(255, 255, 255, 0.12);
     font-style: normal;
   }
 
   &__name {
-    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    font-size: clamp(0.8rem, 1.35vw, 0.9rem);
     font-weight: 700;
     font-style: normal;
     letter-spacing: -0.02em;
@@ -68,7 +80,7 @@
   }
 
   &__role {
-    font-size: clamp(0.8rem, 1.75vw, 0.9rem);
+    font-size: clamp(0.7rem, 1.2vw, 0.8rem);
     font-weight: 600;
     line-height: 1.45;
     color: rgba(255, 255, 255, 0.72);
