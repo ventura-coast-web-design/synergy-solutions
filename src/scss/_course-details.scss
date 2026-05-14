@@ -19,6 +19,28 @@
     color: variables.$hero-navy;
   }
 
+  &__custom-banner {
+    margin: 0 0 clamp(1.5rem, 4vw, 2.25rem);
+    padding: clamp(1.15rem, 3vw, 1.5rem) clamp(1rem, 3vw, 1.35rem);
+    border-radius: clamp(0.5rem, 1.5vw, 0.75rem);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-left: 5px solid variables.$accent-copper;
+    background:
+      radial-gradient(120% 90% at 0% 0%, rgba(59, 158, 255, 0.2) 0%, transparent 52%),
+      linear-gradient(135deg, variables.$hero-navy 0%, #252d3d 50%, #1e2633 100%);
+    box-shadow:
+      0 3px 0 rgba(211, 131, 80, 0.4),
+      0 14px 36px rgba(15, 23, 42, 0.18);
+  }
+
+  &__custom-banner-text {
+    margin: 0;
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    font-weight: 600;
+    line-height: 1.55;
+    color: rgba(226, 232, 240, 0.95);
+  }
+
   &__column-headers {
     display: grid;
     grid-template-columns: 1fr;
