@@ -13,13 +13,13 @@
   var profiles = [
     {
       name: "Jonathan Wisniewski",
-      line2: "Keynote speaker",
+      line2: "Founder and Principal Facilitator",
       line3: "Employee engagement",
     },
     {
       name: "Alison Matthey",
-      line2: "Facilitator & executive coach",
-      line3: "Leadership development",
+      line2: "Lead Facilitator",
+      line3: "Executive Coach",
     },
   ];
 
