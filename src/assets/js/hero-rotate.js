@@ -14,12 +14,12 @@
     {
       name: "Jonathan Wisniewski",
       line2: "Founder and Principal Facilitator",
-      line3: "Employee engagement",
+      line3: "Executive Coach",
     },
     {
       name: "Alison Matthey",
       line2: "Lead Facilitator",
-      line3: "Executive Coach",
+      line3: "Leadership Coach",
     },
   ];
 
