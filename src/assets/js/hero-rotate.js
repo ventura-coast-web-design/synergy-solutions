@@ -17,9 +17,19 @@
       line3: "Executive Coach",
     },
     {
-      name: "Alison Matthey",
+      name: "Denisse Ypiña",
       line2: "Lead Facilitator",
+      line3: "Leadership & Corporate Coach",
+    },
+    {
+      name: "Alison Matthey",
+      line2: "Facilitator",
       line3: "Leadership Coach",
+    },
+    {
+      name: "Caryn Vincent",
+      line2: "Facilitator",
+      line3: "Talent Development",
     },
   ];
 

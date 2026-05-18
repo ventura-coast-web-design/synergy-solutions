@@ -220,15 +220,31 @@
       height: clamp(440px, 48vw, 700px);
     }
 
-    // Alison’s source is a taller half-body with more headroom than Jonathan’s crop;
-    // same global height + scale reads as “much taller.” Slightly reduce scale / height
-    // so she sits closer to his visual mass (tune or remove if you re-crop the PNG).
+    // Tall portrait crops — default height + scale(1.35) overflows the card and nav.
+    &[data-hero-photo="0"] {
+      height: clamp(320px, 88vw, 500px);
+
+      @include mixins.responsive(variables.$breakpoint-lg) {
+        height: clamp(400px, 44vw, 580px);
+        transform: scale(1.0);
+      }
+    }
+
     &[data-hero-photo="1"] {
       height: clamp(330px, 90vw, 500px);
 
       @include mixins.responsive(variables.$breakpoint-lg) {
         height: clamp(400px, 42vw, 600px);
         transform: scale(1.12);
+      }
+    }
+
+    &[data-hero-photo="2"] {
+      height: clamp(300px, 82vw, 460px);
+
+      @include mixins.responsive(variables.$breakpoint-lg) {
+        height: clamp(360px, 38vw, 520px);
+        transform: scale(1.06);
       }
     }
   }
