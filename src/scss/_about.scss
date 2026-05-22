@@ -294,7 +294,7 @@
 }
 
 .about-quote {
-  margin: clamp(1.35rem, 3vw, 1.85rem) 0 0;
+  margin: clamp(1.35rem, 3vw, 1.85rem) 0 1rem;
   padding: clamp(1rem, 2.5vw, 1.35rem) clamp(1rem, 2.5vw, 1.35rem)
     clamp(1rem, 2.5vw, 1.25rem) clamp(1rem, 2.5vw, 1.35rem);
   border-left: 4px solid variables.$accent-copper;
