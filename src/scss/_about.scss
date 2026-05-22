@@ -266,7 +266,7 @@
     text-transform: uppercase;
     color: variables.$secondary-color;
 
-    &:first-of-type {
+    .about-main__section-title + & {
       margin-top: 0;
     }
   }
