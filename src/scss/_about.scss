@@ -245,7 +245,7 @@
   min-width: 0;
 
   &__bio {
-    margin-bottom: clamp(2.5rem, 5.5vw, 3.5rem);
+    margin-bottom: 0rem;
     padding: clamp(1.5rem, 4vw, 2.5rem) 0;
   }
 
@@ -282,7 +282,7 @@
 
 .about-prose {
   p {
-    margin: 0 0 1rem;
+    margin: 0 0 0rem;
     font-size: clamp(0.95rem, 1.85vw, 1.05rem);
     line-height: 1.65;
     color: variables.$text-color;
